@@ -1,0 +1,80 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+@prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
+
+rfp:travelTimeProfile
+    a sh:NodeShape ;
+    dcterms:conformsTo rfp:FundamentalProfile ;
+    sh:closed true ;
+    sh:targetNode rfr-sep:travelTime ;
+    sh:property  [
+        sh:path rdf:type ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+        sh:in (
+            ero-core:ExperimentParameter
+            owl:DatatypeProperty
+        ) ;
+    ], [
+        sh:path dcterms:conformsTo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue rfp:travelTimeProfile ;
+    ], [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue "Travel time" ;
+    ], [
+        sh:path rdfs:comment ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue "The time required for a robot to travel from start to end of the track, measured in seconds." ;
+    ], [
+        sh:path rdfs:range ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            a sh:NodeShape ;
+            sh:closed true ;
+            sh:property  [
+                sh:path rdf:type ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:hasValue rdfs:Datatype ;
+            ], [
+                sh:path owl:onDatatype ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:hasValue "xsd:float" ;
+            ], [
+                sh:path owl:withRestrictions ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:node [
+                    a sh:NodeShape ;
+                    sh:property [
+                        sh:path xsd:minInclusive ;
+                        sh:minCount 1 ;
+                        sh:maxCount 1 ;
+                        sh:hasValue 0.0 ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ],[
+        sh:path qudt:unit ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue unit:SEC ;
+    ] ;
+.
