@@ -1,0 +1,21 @@
+@prefix cora: <http://www.ieee.org/1872/cora#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix iso8373: <http://www.iso.org/8373#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+@prefix rfr-shw: <http://w3id.org/RoBivaL/FDORecord/Specification/Hardware/> .
+
+rfr-shw:Bonirob
+    a
+        cora:MobileRobot ,
+        cora:Robot ,
+        iso8373:AutonomousRobot ,
+        iso8373:MobileRobot ,
+        owl:NamedIndividual ,
+        sosa:Platform ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "BoniRob" ;
+.

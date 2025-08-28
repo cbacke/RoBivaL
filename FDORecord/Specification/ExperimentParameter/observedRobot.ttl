@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+@prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
+
+rfr-sep:observedRobot
+    a
+        ero-core:ExperimentParameter ,
+        owl:ObjectProperty ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    rdfs:label "Observed Robot" ;
+    rdfs:comment "The specific robot being observed or tested in an experiment." ;
+    rdfs:range rfr-sep:AvailableRobot ;
+.

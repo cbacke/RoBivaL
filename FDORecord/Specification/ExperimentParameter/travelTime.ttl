@@ -11,7 +11,7 @@
 
 rfr-sep:travelTime
     a
-        ero-core:ExperimentParameter,
+        ero-core:ExperimentParameter ,
         owl:DatatypeProperty ;
     dcterms:conformsTo rfp:travelTimeProfile ;
     rdfs:label "Travel time" ;
