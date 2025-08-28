@@ -14,39 +14,41 @@ rfr-set:ObstacleAvoidance
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Obstacle Avoidance Experiment" ;
     rdfs:comment "An experiment type focused on testing robot navigation around obstacles." ;
-    ero-core:hasParameterUsage
-        rfr-set:ObservedRobotUsageForObstacleAvoidance ,
-        rfr-set:TravelTimeUsageForObstacleAvoidance ;
-    ero-core:hasMethodologySpec rfr-set:MethodologySpecForObstacleAvoidance ;
+    ero-core:hasParameterUsage [
+        a ero-core:ParameterUsage ;
+        dcterms:conformsTo rfp:TrivialProfile ;
+        rdfs:label "Observed Robot Usage for Obstacle Avoidance" ;
+        ero-core:usesParameter rfr-sep:observedRobot ;
+        ero-util:hasVariableRole ero-util:IndependentVariable ;
+        ero-util:isRequired true ;
+    ] , [
+        a ero-core:ParameterUsage ;
+        dcterms:conformsTo rfp:TrivialProfile ;
+        rdfs:label "Travel Time Usage for Obstacle Avoidance" ;
+        ero-core:usesParameter rfr-sep:travelTime ;
+        ero-util:hasVariableRole ero-util:DependentVariable ;
+        ero-util:isRequired true ;
+    ] ;
+    ero-core:hasMethodologySpec [
+        a ero-core:MethodologySpec ;
+        ero-alias:BFO_hasPart [
+            a ero-util:ResearchObjectiveSpec ;
+            dcterms:description "TODO ResearchObjectiveSpecForObstacleAvoidance" ;
+        ] , [
+            a ero-util:ExperimentSetupSpec ;
+            dcterms:description "TODO ExperimentSetupSpecForObstacleAvoidance" ;
+        ] , [
+            a ero-util:ProcedureSpec ;
+            dcterms:description "TODO ProcedureSpecForObstacleAvoidance" ;
+        ] , [
+            a ero-util:SuccessCriteriaSpec ;
+            dcterms:description "TODO SuccessCriteriaSpecForObstacleAvoidance" ;
+        ] , [
+            a ero-util:RepetitionPolicySpec ;
+            dcterms:description "TODO RepetitionPolicySpecForObstacleAvoidance" ;
+        ] , [
+            a ero-util:SafetySpec ;
+            dcterms:description "TODO SafetySpecForObstacleAvoidance" ;
+        ] ;
+    ] ;
 .
-
-rfr-set:ObservedRobotUsageForObstacleAvoidance
-    a ero-core:ParameterUsage ;
-    dcterms:conformsTo rfp:TrivialProfile ;
-    rdfs:label "Observed Robot Usage for Obstacle Avoidance" ;
-    ero-core:usesParameter rfr-sep:observedRobot ;
-    ero-util:hasVariableRole ero-util:IndependentVariable ;
-    ero-util:isRequired true ;
-.
-
-rfr-set:TravelTimeUsageForObstacleAvoidance
-    a ero-core:ParameterUsage ;
-    dcterms:conformsTo rfp:TrivialProfile ;
-    rdfs:label "Travel Time Usage for Obstacle Avoidance" ;
-    ero-core:usesParameter rfr-sep:travelTime ;
-    ero-util:hasVariableRole ero-util:DependentVariable ;
-    ero-util:isRequired true ;
-.
-
-rfr-set:MethodologySpecForObstacleAvoidance
-    a ero-core:MethodologySpec ;
-    ero-alias:BFO_hasPart xxx
-    xxx
-
-
-ero-util:ResearchObjectiveSpec
-ero-util:ExperimentSetupSpec
-ero-util:ProcedureSpec
-ero-util:SuccessCriteriaSpec
-ero-util:RepetitionPolicySpec
-ero-util:SafetySpec
