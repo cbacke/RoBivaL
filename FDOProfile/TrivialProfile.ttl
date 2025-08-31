@@ -1,20 +1,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdof: <https://w3id.org/fdof/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 rfp:TrivialProfile
-    a sh:NodeShape ;
+    rdf:type sh:NodeShape ;
     dcterms:conformsTo rfp:FundamentalProfile ;
     sh:closed false ;
+    fdof:isMaterializedBy rfp:TrivialProfile.ttl ;
+    rdfs:label "TrivialProfile" ;
+    rdfs:comment "TrivialProfile is a maximally lenient FDO profile. An FDO record which declares conformance to TrivialProfile can have any properties."@en ;
     sh:property [
-        sh:path rdf:type ;
-        sh:minCount 0 ;
-    ], [
         sh:path dcterms:conformsTo ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:hasValue rfp:TrivialProfile ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue rfp:TrivialProfile ;
+        ] ;
     ] ;
 .

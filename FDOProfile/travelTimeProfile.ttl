@@ -1,4 +1,5 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdof: <https://w3id.org/fdof/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -12,10 +13,13 @@
 @prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
 
 rfp:travelTimeProfile
-    a sh:NodeShape ;
+    rdf:type sh:NodeShape ;
     dcterms:conformsTo rfp:FundamentalProfile ;
     sh:closed true ;
     sh:targetNode rfr-sep:travelTime ;
+    fdof:isMaterializedBy rfp:travelTimeProfile.ttl ;
+    rdfs:label "travelTimeProfile" ;
+    rdfs:comment "travelTimeProfile is a maximally strict FDO profile. The only FDO record that conforms to travelTimeProfile is http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/travelTime."@en ;
     sh:property  [
         sh:path rdf:type ;
         sh:minCount 2 ;
@@ -26,9 +30,23 @@ rfp:travelTimeProfile
         ) ;
     ], [
         sh:path dcterms:conformsTo ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue rfp:TrivialProfile ;
+        ] ;
+    ], [
+        sh:path dcterms:conformsTo ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue rfp:travelTimeProfile ;
+        ] ;
+    ], [
+        sh:path fdof:isMaterializedBy ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:hasValue rfp:travelTimeProfile ;
+        sh:hasValue rfr-sep:travelTime.ttl ;
     ], [
         sh:path rdfs:label ;
         sh:minCount 1 ;
@@ -44,7 +62,7 @@ rfp:travelTimeProfile
         sh:qualifiedMinCount 1 ;
         sh:qualifiedMaxCount 1 ;
         sh:qualifiedValueShape [
-            a sh:NodeShape ;
+            rdf:type sh:NodeShape ;
             sh:closed true ;
             sh:property  [
                 sh:path rdf:type ;
@@ -61,7 +79,7 @@ rfp:travelTimeProfile
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
                 sh:node [
-                    a sh:NodeShape ;
+                    rdf:type sh:NodeShape ;
                     sh:property [
                         sh:path xsd:minInclusive ;
                         sh:minCount 1 ;

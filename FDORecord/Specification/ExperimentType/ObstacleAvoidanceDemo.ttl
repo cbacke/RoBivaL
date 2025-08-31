@@ -1,0 +1,49 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdof: <https://w3id.org/fdof/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ero-alias: <http://w3id.org/ExperimentalResearchOntology/alias#> .
+@prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
+@prefix ero-util: <http://w3id.org/ExperimentalResearchOntology/util#> .
+@prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
+@prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
+@prefix rfr-set: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentType/> .
+
+rfr-set:ObstacleAvoidanceDemo
+    rdf:type ero-core:ExperimentType ;
+    dcterms:conformsTo rfp:TrivialProfile ;
+    fdof:isMaterializedBy rfr-set:ObstacleAvoidanceDemo.ttl ;
+    rdfs:label "Obstacle Avoidance Experiment" ;
+    rdfs:comment "An experiment type focused on testing robot navigation around obstacles." ;
+    ero-core:hasParameterUsage [
+        rdf:type ero-core:ParameterUsage ;
+        rdfs:label "Observed Robot Usage for Obstacle Avoidance" ;
+        ero-core:usesParameter rfr-sep:observedRobot ;
+        ero-util:hasVariableRole ero-util:IndependentVariable ;
+        ero-util:isRequired true ;
+    ] , [
+        rdf:type ero-core:ParameterUsage ;
+        rdfs:label "Travel Time Usage for Obstacle Avoidance" ;
+        ero-core:usesParameter rfr-sep:travelTime ;
+        ero-util:hasVariableRole ero-util:DependentVariable ;
+        ero-util:isRequired true ;
+    ] ;
+    ero-core:hasMethodologySpec [
+        rdf:type ero-core:MethodologySpec ;
+        ero-alias:BFO_hasPart [
+            rdf:type ero-util:ResearchObjectiveSpec ;
+            dcterms:description "The objective of the obstacle avoidance experiment is to demonstrate SherpaTT's ability to step over an obstacle without contact, thanks to its actively controlled suspension. For constrast, a variation of the experiment is conducted where the robot drives around the obstacle. This variation is also performed by ARTEMIS, which, due to its passive suspension, cannot step over the obstacle. Both variants are conducted only on moist and compacted soil." ;
+        ] , [
+            rdf:type ero-util:ExperimentSetupSpec ;
+            dcterms:description "The obstacle is a cuboid with variable dimensions (height, width, depth). It is placed half way between the start and finish line of the track, which has a total length of 5m. The sides of the cuboid are parallel to the ground, the start line, and the direction of the track." ;
+        ] , [
+            rdf:type ero-util:ProcedureSpec ;
+            dcterms:description "In an experiment run, the robot first drives at a constant commanded speed straight up to the obstacle. The operator then issues any commands necessary to either step over or drive around the obstacle, depending on the experiment variant. After a successful avoidance maneuver, the robot continues in a straight line towards the finish, at the intially commanded speed." ;
+        ] , [
+            rdf:type ero-util:SuccessCriteriaSpec ;
+            dcterms:description "The obstacle must be surpassed without making contact." ;
+        ] ;
+    ] ;
+.
