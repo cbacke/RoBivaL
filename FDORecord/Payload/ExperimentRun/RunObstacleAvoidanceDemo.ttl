@@ -5,12 +5,12 @@
 
 @prefix ero-core: <http://w3id.org/ExperimentalResearchOntology/core#> .
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
-@prefix rfr-pr: <http://w3id.org/RoBivaL/FDORecord/Payload/Run/> .
+@prefix rfr-per: <http://w3id.org/RoBivaL/FDORecord/Payload/ExperimentRun/> .
 @prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
 @prefix rfr-set: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentType/> .
 @prefix rfr-shw: <http://w3id.org/RoBivaL/FDORecord/Specification/Hardware/> .
 
-rfr-pr:RunObstacleAvoidanceDemo
+rfr-per:RunObstacleAvoidanceDemo
     rdf:type ero-core:ExperimentRun ;
     dcterms:conformsTo rfp:TrivialProfile ;
     rdfs:label "Run of an obstacle avoidance experiment" ;
