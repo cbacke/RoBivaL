@@ -14,6 +14,7 @@
 rfr-sep:travelTime
     rdf:type
         ero-core:ExperimentParameter ,
+        fdof:FAIRDigitalObject ,
         owl:DatatypeProperty ;
     dcterms:conformsTo rfp:TrivialProfile ;
     dcterms:conformsTo rfp:travelTimeProfile ;

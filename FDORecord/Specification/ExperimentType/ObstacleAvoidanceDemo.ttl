@@ -12,7 +12,9 @@
 @prefix rfr-set: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentType/> .
 
 rfr-set:ObstacleAvoidanceDemo
-    rdf:type ero-core:ExperimentType ;
+    rdf:type
+        ero-core:ExperimentType ,
+        fdof:FAIRDigitalObject ;
     dcterms:conformsTo rfp:TrivialProfile ;
     fdof:isMaterializedBy rfr-set:ObstacleAvoidanceDemo.ttl ;
     rdfs:label "Obstacle Avoidance Experiment" ;

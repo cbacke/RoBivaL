@@ -7,13 +7,22 @@
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 rfp:TrivialProfile
-    rdf:type sh:NodeShape ;
+    rdf:type
+        fdof:FAIRDigitalObject ,
+        sh:NodeShape ;
     dcterms:conformsTo rfp:FundamentalProfile ;
     sh:closed false ;
     fdof:isMaterializedBy rfp:TrivialProfile.ttl ;
     rdfs:label "TrivialProfile" ;
     rdfs:comment "TrivialProfile is a maximally lenient FDO profile. An FDO record which declares conformance to TrivialProfile can have any properties."@en ;
     sh:property [
+        sh:path rdf:type ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue fdof:FAIRDigitalObject ;
+        ] ;
+    ] , [
         sh:path dcterms:conformsTo ;
         sh:qualifiedMinCount 1 ;
         sh:qualifiedMaxCount 1 ;

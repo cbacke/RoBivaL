@@ -7,7 +7,9 @@
 @prefix rfp: <http://w3id.org/RoBivaL/FDOProfile/> .
 
 rfp:FundamentalProfile
-    rdf:type sh:NodeShape ;
+    rdf:type
+        fdof:FAIRDigitalObject ,
+        sh:NodeShape ;
     dcterms:conformsTo rfp:FundamentalProfile ;
     sh:closed true ;
     fdof:isMaterializedBy rfp:FundamentalProfile.ttl ;
@@ -15,33 +17,86 @@ rfp:FundamentalProfile
     rdfs:comment "FundamentalProfile is a self-validating FDO profile. It serves as a base case for the recursive definition of FDO profiles. (Per FDO specifiction, every FDO record must conform to an FDO profile, and every FDO profile is represented by an FDO record.) In other words, FundamentalProfile is designed such that every valid FDO profile conforms to FundamentalProfile, including FundamentalProfile itself."@en ;
     sh:property [
         sh:path rdf:type ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:hasValue sh:NodeShape ;
-    ], [
+        sh:minCount 2 ;
+    ] , [
+        sh:path rdf:type ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue fdof:FAIRDigitalObject ;
+        ] ;
+    ] , [
+        sh:path rdf:type ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue sh:NodeShape ;
+        ] ;
+    ] , [
         sh:path dcterms:conformsTo ;
-        sh:minCount 1 ;
-    ], [
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue rfp:FundamentalProfile ;
+        ] ;
+    ] , [
         sh:path sh:closed ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:in ( false true ) ;
-    ], [
+    ] , [
         sh:path sh:targetNode ;
         sh:minCount 0 ;
-    ], [
+    ] , [
         sh:path fdof:isMaterializedBy ;
         sh:minCount 0 ;
-    ], [
+    ] , [
         sh:path rdfs:label ;
         sh:minCount 0 ;
-    ], [
+    ] , [
         sh:path rdfs:comment ;
         sh:minCount 0 ;
-    ], [
+    ] , [
         sh:path sh:property ;
         sh:minCount 1 ;
-    ], [
+    ] , [
+        sh:path sh:property ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            rdf:type sh:NodeShape ;
+            sh:closed true ;
+            sh:property  [
+                sh:path sh:path ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:hasValue rdf:type ;
+            ] , [
+                sh:path sh:qualifiedMinCount ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:hasValue 1 ;
+            ] , [
+                sh:path sh:qualifiedMaxCount ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:hasValue 1 ;
+            ] , [
+                sh:path sh:qualifiedValueShape ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:node [
+                    rdf:type sh:NodeShape ;
+                    sh:property [
+                        sh:path sh:hasValue ;
+                        sh:minCount 1 ;
+                        sh:maxCount 1 ;
+                        sh:hasValue fdof:FAIRDigitalObject ;
+                    ] ;
+                ] ;
+            ] ;
+        ] ;
+    ] , [
         sh:path sh:property ;
         sh:qualifiedMinCount 1 ;
         sh:qualifiedValueShape [

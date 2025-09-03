@@ -13,7 +13,9 @@
 @prefix rfr-sep: <http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/> .
 
 rfp:travelTimeProfile
-    rdf:type sh:NodeShape ;
+    rdf:type
+        fdof:FAIRDigitalObject ,
+        sh:NodeShape ;
     dcterms:conformsTo rfp:FundamentalProfile ;
     sh:closed true ;
     sh:targetNode rfr-sep:travelTime ;
@@ -22,42 +24,55 @@ rfp:travelTimeProfile
     rdfs:comment "travelTimeProfile is a maximally strict FDO profile. The only FDO record that conforms to travelTimeProfile is http://w3id.org/RoBivaL/FDORecord/Specification/ExperimentParameter/travelTime."@en ;
     sh:property  [
         sh:path rdf:type ;
-        sh:minCount 2 ;
-        sh:maxCount 2 ;
-        sh:in (
-            ero-core:ExperimentParameter
-            owl:DatatypeProperty
-        ) ;
-    ], [
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue fdof:FAIRDigitalObject ;
+        ] ;
+    ] , [
+        sh:path rdf:type ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue ero-core:ExperimentParameter ;
+        ] ;
+    ] , [
+        sh:path rdf:type ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1 ;
+        sh:qualifiedValueShape [
+            sh:hasValue owl:DatatypeProperty ;
+        ] ;
+    ] , [
         sh:path dcterms:conformsTo ;
         sh:qualifiedMinCount 1 ;
         sh:qualifiedMaxCount 1 ;
         sh:qualifiedValueShape [
             sh:hasValue rfp:TrivialProfile ;
         ] ;
-    ], [
+    ] , [
         sh:path dcterms:conformsTo ;
         sh:qualifiedMinCount 1 ;
         sh:qualifiedMaxCount 1 ;
         sh:qualifiedValueShape [
             sh:hasValue rfp:travelTimeProfile ;
         ] ;
-    ], [
+    ] , [
         sh:path fdof:isMaterializedBy ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:hasValue rfr-sep:travelTime.ttl ;
-    ], [
+    ] , [
         sh:path rdfs:label ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:hasValue "Travel time" ;
-    ], [
+    ] , [
         sh:path rdfs:comment ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:hasValue "The time required for a robot to travel from start to end of the track, measured in seconds." ;
-    ], [
+    ] , [
         sh:path rdfs:range ;
         sh:qualifiedMinCount 1 ;
         sh:qualifiedMaxCount 1 ;
@@ -69,12 +84,12 @@ rfp:travelTimeProfile
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
                 sh:hasValue rdfs:Datatype ;
-            ], [
+            ] , [
                 sh:path owl:onDatatype ;
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
                 sh:hasValue "xsd:float" ;
-            ], [
+            ] , [
                 sh:path owl:withRestrictions ;
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
@@ -89,7 +104,7 @@ rfp:travelTimeProfile
                 ] ;
             ] ;
         ] ;
-    ],[
+    ] , [
         sh:path qudt:unit ;
         sh:minCount 1 ;
         sh:maxCount 1 ;

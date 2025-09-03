@@ -1,5 +1,6 @@
 @prefix cora: <http://www.ieee.org/1872/cora#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdof: <https://w3id.org/fdof/ontology#> .
 @prefix iso8373: <http://www.iso.org/8373#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,6 +14,7 @@ rfr-shw:Bonirob
     rdf:type
         cora:MobileRobot ,
         cora:Robot ,
+        fdof:FAIRDigitalObject ,
         iso8373:AutonomousRobot ,
         iso8373:MobileRobot ,
         owl:NamedIndividual ,
